@@ -13,12 +13,15 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#Ipad">Ipad</a></li>
+                    <li><a href="#">Ipad</a></li>
                     <li><a href="#Telefoon">Telefoon</a></li>
                     <li><a href="#Laptop">Laptop</a></li>
                 </ul>
             </nav>
         </header>
+
+        @include('includes.navigation')
+
 
         <div class="content">
             @yield('content')
