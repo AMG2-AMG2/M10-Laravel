@@ -6,10 +6,14 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
+    public function index()
+    {
+        return view('contact');
+    }
+
     public function submit(Request $request)
     {
-        // Voeg hier de logica toe voor het verwerken van het formulier
 
-        return view('contact');
+        return redirect()->route('contact')->with('success', 'Formulier verstuurd.');
     }
 }
