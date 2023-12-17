@@ -18,3 +18,4 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submit']);
 Route::get('/users', [UserController::class, 'listUsers'])->name('users.list');
 Route::get('/projects/add', [ProjectController::class, 'add'])->name('project.add');
+Route::get('/projects/list', [ProjectController::class, 'showList'])->name('project.list');
