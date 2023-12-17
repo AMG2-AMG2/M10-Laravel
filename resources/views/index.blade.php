@@ -9,9 +9,16 @@
     <h1>Project</h1>
 
     <ul>
-        @foreach ($projects as $project)
-            <li>{{ $project->field_one }}</li>
-        @endforeach
+        @forelse ($projects as $project)
+            <li>
+                <a href="{{ route('projects.show', $project->id) }}">
+                    {{ $project->titel }}
+                </a>
+                - {{ $project->beschrijving }} (Active: {{ $project->active ? 'Yes' : 'No' }})
+            </li>
+        @empty
+            <li>No projects available</li>
+        @endforelse
     </ul>
 </body>
 </html>
