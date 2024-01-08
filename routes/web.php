@@ -8,6 +8,7 @@ use App\Http\Controllers\ProjectController;
 
 
 
+
 Route::get('/', function () {
     return view('home');
 });
@@ -19,3 +20,5 @@ Route::post('/contact', [ContactController::class, 'submit']);
 Route::get('/users', [UserController::class, 'listUsers'])->name('users.list');
 Route::get('/projects/add', [ProjectController::class, 'add'])->name('project.add');
 Route::get('/projects/list', [ProjectController::class, 'showList'])->name('project.list');
+Route::get('/project/{project}', [ProjectController::class, 'show'])->name('project.show');
+
