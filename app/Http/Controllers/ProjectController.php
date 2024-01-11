@@ -3,24 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Project; // voeg je Eloquent Model toe
+use App\Models\Project; 
 
 class ProjectController extends Controller
 {
+    public function display(Project $project = null)
+    {
+        if ($project) {
+            return view('project.show', ['project' => $project]);
+        } else {
+            $projects = Project::all();
+            return view('project.index', ['projects' => $projects]);
+        }
+    }
+
     public function add()
     {
-        // maak een nieuw model aan
         $project = new Project();
 
-        // definieer de velden
         $project->field_one = 'Mijn data';
 
-        // sla het model op
         $project->save();
 
-        // optioneel: haal alle projecten op en geef ze door aan de view
-        $projects = Project::all();
-
-        return view('projects.index', ['projects' => $projects]);
+        return redirect()->route('projects.display');
     }
-}
+}   
