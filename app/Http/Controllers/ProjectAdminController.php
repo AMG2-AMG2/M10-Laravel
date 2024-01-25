@@ -82,10 +82,9 @@ class ProjectAdminController extends Controller
     // Verwijderen van een project
     public function destroy(Project $project)
     {
-        // Verwijder het project
         $project->delete();
-
+    
         // leid naar de projectindex
-        return redirect()->route('project.index');
+        return redirect(route('projects.index'))->with('alert', 'Het item ' . $project->title . ' is nu verwijderd.');
     }
 }
