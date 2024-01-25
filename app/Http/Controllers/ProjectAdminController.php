@@ -27,7 +27,7 @@ class ProjectAdminController extends Controller
     {
         return view('dashboard.projects.create');
     }
-    
+
     // Opslaan van een nieuw project
     public function store(Request $request)
     {
@@ -39,12 +39,12 @@ class ProjectAdminController extends Controller
 
         // Maak de nieuwe project aan met gegevens die al ingevoerd zijn
         $project = new Project($valid_data);
-        
+
         $project->save();
 
- 
+
         // leid naar de projectweergave
-         return redirect()->route('admin.projects.index')->with('success', 'Project succesvol toegevoegd!');
+        return redirect()->route('admin.projects.index')->with('success', 'Project succesvol toegevoegd!');
     }
 
 
@@ -52,23 +52,31 @@ class ProjectAdminController extends Controller
     // Formulier voor het bewerken van een project
     public function edit(Project $project)
     {
-        return view('projects.edit', ['project' => $project]);
+        return view('dashboard.projects.edit', ['project' => $project]);
     }
 
     // Updaten van een project
     public function update(Request $request, Project $project)
     {
-        // Valideer het formuliergegevens
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-        ]);
+        // Valideer de input
+        $valid_data = $this->validateProject($request, $project);
 
-        // Werk het project bij met de ingevoerde gegevens
-        $project->update($validatedData);
+        // Update het project met de gevalideerde data
+        $project->update($valid_data);
 
         // leid naar de projectweergave
-        return redirect()->route('project.show', $project);
+        return redirect(route('project.show', $project->id));
+    }
+
+    // Validderenfucctie toevoegen
+    private function validateProject(Request $request, Project $project)
+    {
+        return $request->validate([
+            'title'       => 'required|max:255|unique:projects,id,' . $project->id,
+            'intro'       => 'required',
+            'description' => 'required',
+            'active'      => 'nullable',
+        ]);
     }
 
     // Verwijderen van een project
