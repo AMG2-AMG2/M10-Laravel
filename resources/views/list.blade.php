@@ -1,4 +1,4 @@
-@extends('layout.list')
+@extends('layouts.master')
 
 @section('title', 'Projectenlijst')
 

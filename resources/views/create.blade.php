@@ -1,18 +1,30 @@
-@extends('layouts.dashboard')
+@extends('layouts.app')
+
+@section('title', 'Nieuw Project')
 
 @section('content')
-    <h2>Project toevoegen</h2>
+    <h1>Nieuw Project</h1>
 
-    <form action="{{ route('projects.store') }}" method="post">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form action="{{ route('admin.projects.store') }}" method="POST">
         @csrf
 
-        <!-- Voeg hier de rest van je formulier toe -->
-        <!-- Bijvoorbeeld: -->
         <label for="title">Titel:</label>
-        <input type="text" id="title" name="title" required>
+        <input type="text" name="title" value="{{ old('title') }}" required>
 
-        <label for="description">Beschrijving:</label>
-        <textarea id="description" name="description" required></textarea>
+        <label for="onderdeel">Onderdeel:</label>
+        <input type="text" name="onderdeel" value="{{ old('onderdeel') }}" required>
+
+        <!-- Meer formulierelementen hier -->
 
         <button type="submit">Opslaan</button>
     </form>

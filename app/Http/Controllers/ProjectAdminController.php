@@ -31,18 +31,23 @@ class ProjectAdminController extends Controller
     // Opslaan van een nieuw project
     public function store(Request $request)
     {
-        // Valideren van de formuliergegevens
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
+        // Valideer de input
+        $valid_data = $request->validate([
+            'title'      => 'required|unique:projects|max:255',
+            'onderdeel'  => 'required',
         ]);
 
         // Maak de nieuwe project aan met gegevens die al ingevoerd zijn
-        $project = Project::create($validatedData);
+        $project = new Project($valid_data);
+        
+        $project->save();
 
+ 
         // leid naar de projectweergave
-        return redirect()->route('project.show', $project);
+         return redirect()->route('admin.projects.index')->with('success', 'Project succesvol toegevoegd!');
     }
+
+
 
     // Formulier voor het bewerken van een project
     public function edit(Project $project)
