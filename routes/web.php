@@ -24,6 +24,7 @@ Route::get('/projects/list', [ProjectController::class, 'showList'])->name('proj
 Route::get('/project/{project}', [ProjectController::class, 'show'])->name('project.show');
 Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
 Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+Route::get('/projects', [ProjectController::class, 'index']);
 
 // Admin routes
 Route::prefix('/dashboard')

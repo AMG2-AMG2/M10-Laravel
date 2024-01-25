@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Project; 
+use App\Models\Project;
 
 class ProjectController extends Controller
 {
+
+    public function index()
+    {
+        $projects = Project::all();
+        return view('projects.index', ['projects' => $projects]);
+    }
+
+    
     // Toon een enkel project of alle projecten
     public function display(Project $project = null)
     {
@@ -44,21 +52,6 @@ class ProjectController extends Controller
         return view('projects.create');
     }
 
-    // Sla het nieuwe project op
-    public function store(Request $request)
-    {
-        // Controleer de invoergegevens
-        $validatedData = $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required',
-        ]);
-
-        // Maak een nieuw project aan met de gevalideerde gegevens
-        Project::create($validatedData);
-
-        // Ga door naar de lijst met projecten
-        return redirect('/projects');
-    }
 
 
     public function showList()
