@@ -51,12 +51,4 @@ class ProjectController extends Controller
     {
         return view('projects.create');
     }
-
-
-
-    public function showList()
-    {
-        // Voeg hier de logica toe voor het weergeven van de lijst van projecten
-        return view('list'); // We gaan ervan uit dat 'projects.list' het juiste pad is naar het Blade-bestand
-    }
 }
