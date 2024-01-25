@@ -59,4 +59,11 @@ class ProjectController extends Controller
         // Ga door naar de lijst met projecten
         return redirect('/projects');
     }
+
+
+    public function showList()
+    {
+        // Voeg hier de logica toe voor het weergeven van de lijst van projecten
+        return view('list'); // We gaan ervan uit dat 'projects.list' het juiste pad is naar het Blade-bestand
+    }
 }

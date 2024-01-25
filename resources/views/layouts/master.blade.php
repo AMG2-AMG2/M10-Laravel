@@ -9,13 +9,14 @@
 </head>
 
 <body>
+<content>
+        @yield('content')
+    </content>
     <header>
         @include('layouts.partials.header')
     </header>
 
-    <content>
-        @yield('content')
-    </content>
+   
 
     <footer>
         @include('layouts.partials.footer')

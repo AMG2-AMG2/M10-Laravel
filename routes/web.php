@@ -8,7 +8,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectAdminController;
 
 // Normale routes
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('home');
 })->name('home');
 

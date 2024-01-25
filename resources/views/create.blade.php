@@ -1,31 +1,19 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Aanmaken</title>
-</head>
-<body>
-    <h2>Project Aanmaken</h2>
+@extends('layouts.dashboard')
 
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+@section('content')
+    <h2>Project toevoegen</h2>
 
-    <form method="POST" action="{{ route('projects.store') }}">
+    <form action="{{ route('projects.store') }}" method="post">
         @csrf
 
+        <!-- Voeg hier de rest van je formulier toe -->
+        <!-- Bijvoorbeeld: -->
         <label for="title">Titel:</label>
-        <input type="text" id="title" name="title" value="{{ old('title') }}" required>
+        <input type="text" id="title" name="title" required>
 
-        <label for="description">Omschrijving:</label>
-        <textarea id="description" name="description" required>{{ old('description') }}</textarea>
+        <label for="description">Beschrijving:</label>
+        <textarea id="description" name="description" required></textarea>
 
-        <button type="submit">Project Aanmaken</button>
+        <button type="submit">Opslaan</button>
     </form>
-</body>
-</html>
+@endsection

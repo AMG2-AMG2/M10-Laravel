@@ -1,18 +1,8 @@
+@extends('layout.list')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>project lijst</title>
-</head>
-<body>
-    <h1>project lijst</h1>
+@section('title', 'Projectenlijst')
 
-    <ul>
-        @foreach ($projects as $project)
-            <li>{{ $project->field_one }}</li>
-        @endforeach
-    </ul>
-</body>
-</html>
+@section('content')
+    <h1>Projectenlijst</h1>
+    <!-- Voeg hier de inhoud van de projectenlijst toe -->
+@endsection

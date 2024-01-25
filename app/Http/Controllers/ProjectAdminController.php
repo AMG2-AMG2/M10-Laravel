@@ -25,9 +25,9 @@ class ProjectAdminController extends Controller
     // Formulier maken voor de nieuwe project
     public function create()
     {
-        return view('projects.create');
+        return view('dashboard.projects.create');
     }
-
+    
     // Opslaan van een nieuw project
     public function store(Request $request)
     {
