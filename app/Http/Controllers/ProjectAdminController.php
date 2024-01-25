@@ -12,7 +12,7 @@ class ProjectAdminController extends Controller
     public function index()
     {
         $projects = Project::paginate(10);
-        return view('dashboard.projects.index', compact('projects'));
+        return view('dashboard.index', compact('projects'));
     }
 
 
@@ -25,7 +25,7 @@ class ProjectAdminController extends Controller
     // Formulier maken voor de nieuwe project
     public function create()
     {
-        return view('dashboard.projects.create');
+        return view('dashboard.create');
     }
 
     // Opslaan van een nieuw project
@@ -52,7 +52,7 @@ class ProjectAdminController extends Controller
     // Formulier voor het bewerken van een project
     public function edit(Project $project)
     {
-        return view('dashboard.projects.edit', ['project' => $project]);
+        return view('dashboard.edit', ['project' => $project]);
     }
 
     // Updaten van een project

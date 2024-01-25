@@ -44,22 +44,6 @@ class ProjectController extends Controller
         return view('projects.create');
     }
 
-    // Sla het nieuwe project op
-    public function store(Request $request)
-    {
-        // Controleer de invoergegevens
-        $validatedData = $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required',
-        ]);
-
-        // Maak een nieuw project aan met de gevalideerde gegevens
-        Project::create($validatedData);
-
-        // Ga door naar de lijst met projecten
-        return redirect('/projects');
-    }
-
 
     public function showList()
     {
