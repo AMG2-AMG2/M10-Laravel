@@ -1,30 +1,20 @@
 @extends('layouts.master')
 
-@section('title', 'Nieuw Project')
+@section('title', 'Nieuw Project bijvoegen')
 
 @section('content')
-    <h1>Nieuw Project</h1>
+    <h1>Nieuw Project Toevoegen</h1>
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    <form action="{{ route('admin.projects.store') }}" method="POST">
+    <!-- Formulier voor het toevoegen van een nieuw project -->
+    <form action="{{ route('admin.projects.store') }}" method="post">
         @csrf
-
         <label for="title">Titel:</label>
-        <input type="text" name="title" value="{{ old('title') }}" required>
+        <input type="text" id="title" name="title" required>
 
         <label for="onderdeel">Onderdeel:</label>
-        <input type="text" name="onderdeel" value="{{ old('onderdeel') }}" required>
+        <input type="text" id="onderdeel" name="onderdeel" required>
 
-        <!-- Meer formulierelementen hier -->
+        <!-- Voeg andere velden toe voor meer -->
 
         <button type="submit">Opslaan</button>
     </form>
