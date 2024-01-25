@@ -18,15 +18,15 @@ class ProjectAdminController extends Controller
 
     // Hij geeft 1 project weer
     public function show(Project $project)
-    {
-        return view('projects.show', ['project' => $project]);
-    }
+{
+    return view('dashboard.show', ['project' => $project]);
+}
 
     // Formulier maken voor de nieuwe project
     public function create()
-    {
-        return view('dashboard.create');
-    }
+{
+    return view('dashboard.create');
+}
 
     // Opslaan van een nieuw project
     public function store(Request $request)
@@ -51,9 +51,9 @@ class ProjectAdminController extends Controller
 
     // Formulier voor het bewerken van een project
     public function edit(Project $project)
-    {
-        return view('dashboard.edit', ['project' => $project]);
-    }
+{
+    return view('dashboard.edit', ['project' => $project]);
+}
 
     // Updaten van een project
     public function update(Request $request, Project $project)
