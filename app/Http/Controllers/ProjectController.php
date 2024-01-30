@@ -11,7 +11,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view('projects.index', ['projects' => $projects]);
+        return view('dashboard.projects.index', ['projects' => $projects]);
     }
 
     
@@ -51,4 +51,12 @@ class ProjectController extends Controller
     {
         return view('projects.create');
     }
+
+
+
+    public function showList()
+    {
+        // Voeg hier de logica toe voor het weergeven van de lijst van projecten
+        return view('list'); // We gaan ervan uit dat 'projects.list' het juiste pad is naar het Blade-bestand
+    }   
 }

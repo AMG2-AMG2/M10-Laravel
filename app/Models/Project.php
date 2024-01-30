@@ -14,7 +14,7 @@ class Project extends Model
      *
      * @var string[]
      */
-    protected $fillable = ['title', 'onderdeel']; // Voeg hier alle velden toe die je wilt invullen
+    protected $fillable = ['titel', 'beschrijving']; // Voeg hier alle velden toe die je wilt invullen
 
     /**
      * The table associated with the model.

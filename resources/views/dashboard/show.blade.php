@@ -1,11 +1,10 @@
 @extends('layouts.master')
 
-@section('title', 'Projecten Overzicht')
+@section('title', 'Show Overzicht')
 
 @section('content')
-    <h1>Projecten Overzicht</h1>
+    <h1>Show Overzicht</h1>
 
-    @foreach ($projects as $project)
         <div>
             <h2>{{ $project->titel }}</h2>
             <p>{{ $project->beschrijving }}</p>
@@ -21,7 +20,4 @@
                 <button type="submit" class="rounded-md bg-orange">Verwijderen</button>
             </form>
         </div>
-    @endforeach
-
-    {{ $projects->links() }}
 @endsection

@@ -33,18 +33,16 @@ class ProjectAdminController extends Controller
     {
         // Valideer de input
         $valid_data = $request->validate([
-            'title'      => 'required|unique:projects|max:255',
-            'onderdeel'  => 'required',
+            'titel'      => 'required|unique:projects|max:255',
+            'beschrijving'  => 'required',
         ]);
-
         // Maak de nieuwe project aan met gegevens die al ingevoerd zijn
         $project = new Project($valid_data);
-
+        
         $project->save();
-
-
+        
         // leid naar de projectweergave
-        return redirect()->route('admin.projects.index')->with('success', 'Project succesvol toegevoegd!');
+        return redirect()->route('projects.index')->with('success', 'Project succesvol toegevoegd!');
     }
 
 
@@ -65,16 +63,15 @@ class ProjectAdminController extends Controller
         $project->update($valid_data);
 
         // leid naar de projectweergave
-        return redirect(route('project.show', $project->id));
+        return redirect(route('projects.show', $project->id));
     }
 
     // Validderenfucctie toevoegen
     private function validateProject(Request $request, Project $project)
     {
         return $request->validate([
-            'title'       => 'required|max:255|unique:projects,id,' . $project->id,
-            'intro'       => 'required',
-            'description' => 'required',
+            'titel'       => 'required|max:255|unique:projects,id,' . $project->id,
+            'beschrijving'       => 'required',
             'active'      => 'nullable',
         ]);
     }

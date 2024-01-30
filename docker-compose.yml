@@ -101,6 +101,16 @@ services:
             - '/dev/shm:/dev/shm'
         networks:
             - sail
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        environment:
+            PMA_HOST: mysql
+            PMA_USER: sail
+            PMA_PASSWORD: password
+        ports:
+            - "1088:80"
+        networks:
+            - sail
 networks:
     sail:
         driver: bridge
